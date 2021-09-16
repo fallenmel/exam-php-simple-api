@@ -35,6 +35,7 @@
         return 
          [ 
           "success" => true,
+          "id" => $this->db->insert_id,
           "message" => "Records inserted successfully."];
       } else{
         return 
@@ -59,7 +60,7 @@
     }
 
     function fetch($id){
-      $sql = "SELECT * FROM users WHERE id = '$id' ";
+      $sql = "SELECT id, name, email, created_at, updated_at FROM users WHERE id = '$id' ";
       if($result = mysqli_query($this->db, $sql)){
         $data = [];
         while($row = $result->fetch_assoc()){
